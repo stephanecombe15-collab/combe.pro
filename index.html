@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kevin Combe</title>
+  <style>
+    :root{
+      --bg:#070707;
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --max: 520px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .wrap{
+      min-height:100svh;
+      display:flex;
+      justify-content:center;
+      padding: 0 18px;
+    }
+    .page{ width:min(var(--max), 100%); }
+
+    /* ===== HERO ===== */
+    .hero{
+      min-height: 100svh;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      gap: 10px;
+      padding-top: 16px;
+    }
+
+    /* Signature (remise) + légèrement réduite */
+    .signature{
+      display:block;
+      margin: 4px auto 8px;
+      max-width: 78%;
+      height:auto;
+      opacity:.98;
+    }
+
+    .photoWrap{
+      position:relative;
+      width:100%;
+      flex: 1 1 auto;
+      min-height: 520px;
+      overflow:hidden;
+      background: var(--bg);
+    }
+    .photoWrap img{
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display:block;
+      background: var(--bg);
+      filter: contrast(1.02) saturate(.98);
+    }
+    .photoWrap::after{
+      content:"";
+      position:absolute; left:0; right:0; bottom:0;
+      height:130px;
+      background: linear-gradient(to top, rgba(0,0,0,.65), transparent);
+      pointer-events:none;
+    }
+
+    /* Spacer plus fin */
+    .spacer{
+      height: 12svh;
+      background: var(--bg);
+    }
+
+    /* Délimitation noire fondue */
+    .divider{
+      border:0;
+      height:1px;
+      background:#000;
+      opacity:.25;
+      margin:0;
+    }
+
+    /* ===== ACTIONS ===== */
+    .actions{
+      padding: 22px 0 60px;
+      background: var(--bg);
+    }
+    .actionsInner{
+      padding-top: 16px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 18px;
+    }
+
+    /* Liste verticale : desktop aligné à gauche, mobile centré */
+    .iconsCol{
+      display:flex;
+      flex-direction:column;
+      gap: 16px;
+      margin-top: 4px;
+      width: 100%;
+      max-width: 320px;
+      align-items:flex-start;
+    }
+
+    .item{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      text-decoration:none;
+      color: var(--text);
+      background: transparent;
+      border:0;
+      padding:0;
+      cursor:pointer;
+      width: 100%;
+      justify-content:flex-start;
+    }
+
+    .icon{
+      width:24px;
+      height:24px;
+      display:block;
+      flex: 0 0 auto;
+      color:#fff;
+    }
+
+    .label{
+      font-size: 0.98rem;
+      letter-spacing:.2px;
+      color: rgba(255,255,255,.88);
+    }
+
+    .item:hover .label{ color: #fff; }
+    .item:hover{ opacity:.86; transform: translateY(-1px); transition:.15s ease; }
+
+    /* Drapeau */
+    .flag{
+      display:inline-flex;
+      align-items:center;
+      margin-top: 8px;
+      opacity:.95;
+    }
+    .fr{
+      width:22px;height:14px;border-radius:3px;overflow:hidden;
+      display:grid;grid-template-columns:repeat(3,1fr);
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .fr span:nth-child(1){background:#0055A4}
+    .fr span:nth-child(2){background:#FFFFFF}
+    .fr span:nth-child(3){background:#EF4135}
+
+    /* ===== MODAL A PROPOS ===== */
+    .backdrop{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      opacity:0; pointer-events:none;
+      transition:opacity .2s ease;
+      z-index:50;
+    }
+    .backdrop.on{opacity:1; pointer-events:auto}
+
+    .panel{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      margin:0 auto;
+      width:min(720px, 100%);
+      transform: translateY(110%);
+      transition: transform .22s ease;
+      z-index:60;
+      padding: 0 14px 14px;
+    }
+    .panel.open{ transform: translateY(0); }
+
+    .panelCard{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(10,10,10,.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 30px 90px rgba(0,0,0,.60);
+      padding:14px;
+      max-height: 78svh;            /* évite que ça prenne tout l’écran */
+      overflow:auto;                 /* scroll à l’intérieur */
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .panelHead{
+      position: sticky;              /* le bouton fermer reste toujours visible */
+      top: 0;
+      background: rgba(10,10,10,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 6px 0 10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      z-index: 1;
+    }
+    .panelHead h2{
+      margin:0;
+      font-size:15px;
+      letter-spacing:.2px;
+      color: var(--text);
+      font-weight:700;
+      text-transform: uppercase;
+    }
+    .close{
+      width:40px;height:40px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: transparent;
+      color:#fff;
+      cursor:pointer;
+      flex: 0 0 auto;
+    }
+    .close:hover{ border-color: rgba(255,255,255,.28); }
+
+    /* Texte À propos : réduit */
+    .aboutText{
+      margin:0;
+      color: var(--muted);
+      line-height:1.6;
+      white-space:pre-line;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 520px){
+      .photoWrap{ min-height: 420px; }
+      .signature{ max-width: 82%; }
+
+      /* Icônes centrées sur mobile */
+      .iconsCol{ align-items:center; }
+      .item{ justify-content:center; width:auto; }
+
+      /* Texte modal encore plus petit sur petits écrans */
+      .aboutText{ font-size: 0.9rem; }
+      .panelCard{ max-height: 74svh; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="page">
+
+      <!-- HERO -->
+      <section class="hero" aria-label="Accueil">
+        <!-- Signature remise (utilise ton fichier actuel) -->
+        <img class="signature"
+             src="kevin-combe-signature-white-small-thin-strong.png"
+             alt="Kevin Combe">
+
+        <div class="photoWrap">
+          <img src="cover.jpg.jpeg" alt="Photo Kevin Combe">
+        </div>
+      </section>
+
+      <!-- Spacer fin -->
+      <div class="spacer" aria-hidden="true"></div>
+
+      <!-- Ligne de délimitation noire -->
+      <hr class="divider" id="actions">
+
+      <!-- Actions -->
+      <section class="actions" aria-label="Actions">
+        <div class="actionsInner">
+
+          <div class="iconsCol">
+            <!-- À propos de moi (ouvre modal) -->
+            <button class="item" id="btnAbout" type="button" aria-controls="panelAbout" aria-expanded="false" title="À propos de moi">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 10v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 7h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <span class="label">À propos de moi</span>
+            </button>
+
+            <!-- LinkedIn (avec texte) -->
+            <a class="item" href="https://fr.linkedin.com/in/kevin-combe-a72261167" target="_blank" rel="noreferrer" title="LinkedIn" aria-label="LinkedIn">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 23.5h4V7.98h-4V23.5ZM8 7.98h3.83v2.12h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1v9.36h-4v-8.3c0-1.98-.04-4.52-2.75-4.52-2.75 0-3.17 2.15-3.17 4.38v8.44H8V7.98Z"/>
+              </svg>
+              <span class="label">LinkedIn</span>
+            </a>
+          </div>
+
+          <!-- Drapeau -->
+          <div class="flag" title="France" aria-label="France">
+            <span class="fr" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Modal À propos -->
+  <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+
+  <aside class="panel" id="panelAbout" aria-hidden="true">
+    <div class="panelCard" role="dialog" aria-modal="true" aria-label="À propos de moi">
+      <div class="panelHead">
+        <h2>À propos de moi</h2>
+        <button class="close" type="button" data-close title="Fermer" aria-label="Fermer">✕</button>
+      </div>
+
+      <p class="aboutText">Je travaille sur les enjeux politiques, institutionnels et africains, à la croisée de l’analyse, de l’écriture et de l’action publique.
+
+Mon parcours s’est construit au contact direct des institutions : en cabinet municipal, au Parlement, et dans des environnements politiques où la rigueur, la discrétion et la capacité d’analyse sont indispensables. J’y ai contribué à la rédaction de notes et de discours, au suivi de dossiers législatifs, et à la compréhension fine des mécanismes de décision.
+
+En parallèle, j’écris sur les transformations économiques et sociales, avec une attention particulière portée aux liens entre France, Europe et Afrique, et aux enjeux contemporains qui traversent ces espaces.
+
+Je m’intéresse aux faits, aux rapports de force, aux idées — et à la manière dont ils se traduisent concrètement dans les politiques publiques.
+
+Mon travail vise à éclairer, structurer et mettre en perspective, sans posture ni simplification.</p>
+    </div>
+  </aside>
+
+  <script>
+    const backdrop = document.getElementById("backdrop");
+    const btnAbout = document.getElementById("btnAbout");
+    const panelAbout = document.getElementById("panelAbout");
+
+    function closeAll(){
+      panelAbout.classList.remove("open");
+      panelAbout.setAttribute("aria-hidden","true");
+      btnAbout.setAttribute("aria-expanded","false");
+      backdrop.classList.remove("on");
+    }
+    function openAbout(){
+      closeAll();
+      panelAbout.classList.add("open");
+      panelAbout.setAttribute("aria-hidden","false");
+      btnAbout.setAttribute("aria-expanded","true");
+      backdrop.classList.add("on");
+    }
+
+    btnAbout.addEventListener("click", openAbout);
+    document.querySelectorAll("[data-close]").forEach(el => el.addEventListener("click", closeAll));
+    backdrop.addEventListener("click", closeAll);
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeAll(); });
+  </script>
+</body>
+</html>
