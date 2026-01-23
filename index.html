@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kevin COMBE</title>
+  <title>Kevin Combe</title>
+
+  <!-- Favicon (si tu l’as ajouté au repo) -->
   <link rel="icon" href="favicon.ico">
-  <link rel="icon" type="image/png" href="favicon.png">
+
   <style>
     :root{
       --bg:#070707;
@@ -111,15 +113,19 @@
       align-items:stretch;
     }
 
+    /* Haut : 2 colonnes sur PC */
     .projGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
       margin-top: 6px;
     }
-    .projBottom{
-      display:flex;
-      justify-content:center;
+
+    /* Bas : 2 cartes côte à côte sur PC */
+    .projBottomGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
       margin-top: 6px;
     }
 
@@ -136,16 +142,21 @@
       overflow:hidden;
       box-shadow: 0 18px 50px rgba(0,0,0,.55);
       transition: .15s ease;
+
+      /* ✅ pour que le titre reste bien en bas */
+      height: 100%;
+      display:flex;
+      flex-direction:column;
     }
     .projCard:hover .frame{
       background: rgba(255,255,255,.08);
       transform: translateY(-1px);
     }
 
-    /* ✅ Image preview (parfait sur iPhone) */
+    /* ✅ Preview via image (centré partout, iPhone OK) */
     .coverImg{
       width:100%;
-      aspect-ratio: 3/4;
+      height: 260px;       /* taille uniforme sur PC */
       object-fit: cover;
       object-position: center;
       display:block;
@@ -154,6 +165,7 @@
 
     .meta{
       padding: 10px 12px 12px;
+      margin-top:auto;     /* ✅ pousse le titre en bas */
     }
     .meta h3{
       margin:0;
@@ -311,6 +323,7 @@
       font-size: 0.95rem;
     }
 
+    /* ===== MOBILE ===== */
     @media (max-width: 520px){
       .photoWrap{ min-height: 420px; }
       .signature{ max-width: 82%; }
@@ -318,10 +331,12 @@
       .iconsCol{ align-items:center; }
       .item{ justify-content:center; width:auto; }
 
-      /* Mobile: pile les projets, plus joli */
+      /* ✅ Projets : empilés sur mobile */
       .projGrid{ grid-template-columns: 1fr; gap: 16px; }
-      .projBottom{ justify-content:stretch; }
-      .projBottom .projCard{ width:100% !important; }
+      .projBottomGrid{ grid-template-columns: 1fr; gap: 16px; }
+
+      /* ✅ un peu plus grand sur téléphone */
+      .coverImg{ height: 340px; }
 
       .aboutText{ font-size: 0.9rem; }
       .panelCard{ max-height: 74svh; }
@@ -352,8 +367,9 @@
         <div class="projectsInner">
           <h2 class="sectionTitle">Mes Projets</h2>
 
-          <!-- Ordre: 1) Inflation, 2) Relations -->
+          <!-- Haut : ordre demandé (Inflation en 1, Relations en 2) -->
           <div class="projGrid">
+
             <a class="projCard" href="politiques-economiques-face-a-l-inflation.pdf" target="_blank" rel="noreferrer">
               <div class="frame">
                 <img class="coverImg" src="politiques-economiques-inflation-cover.png" alt="politiques economiques face a l'inflation">
@@ -371,10 +387,13 @@
                 </div>
               </div>
             </a>
+
           </div>
 
-          <div class="projBottom">
-            <a class="projCard" href="jo-paris-2024.pdf" target="_blank" rel="noreferrer" style="width: min(360px, 100%);">
+          <!-- Bas : JO + Liban côte à côte sur PC, empilés sur mobile -->
+          <div class="projBottomGrid">
+
+            <a class="projCard" href="jo-paris-2024.pdf" target="_blank" rel="noreferrer">
               <div class="frame">
                 <img class="coverImg" src="jo-paris-2024-cover.png" alt="JO Paris 2024">
                 <div class="meta">
@@ -382,18 +401,18 @@
                 </div>
               </div>
             </a>
-            
-<!-- Guerre du Liban -->
-  <a class="projCard" href="guerre-du-liban.pdf" target="_blank" rel="noreferrer">
-    <div class="frame">
-      <img class="coverImg" src="guerre-du-liban-cover.png" alt="Guerre du Liban">
-      <div class="meta">
-        <h3>Guerre du Liban</h3>
-      </div>
-    </div>
-  </a>
 
-</div>
+            <a class="projCard" href="Guerre du Liban.pdf" target="_blank" rel="noreferrer">
+              <div class="frame">
+                <img class="coverImg" src="guerre-du-liban-cover.png" alt="Guerre du Liban">
+                <div class="meta">
+                  <h3>Guerre du Liban</h3>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
         </div>
       </section>
 
@@ -442,7 +461,7 @@
         <button class="close" type="button" data-close title="Fermer" aria-label="Fermer">✕</button>
       </div>
 
-      <p class="aboutText">Je travaille sur les enjeux politiques, institutionnels et internationaux, à la croisée de l’analyse, de l’écriture et de l’action publique.
+      <p class="aboutText">Je travaille sur les enjeux politiques, institutionnels et africains, à la croisée de l’analyse, de l’écriture et de l’action publique.
 
 Mon parcours s’est construit au contact direct des institutions : en cabinet municipal, au Parlement, et dans des environnements politiques où la rigueur, la discrétion et la capacité d’analyse sont indispensables. J’y ai contribué à la rédaction de notes et de discours, au suivi de dossiers législatifs, et à la compréhension fine des mécanismes de décision.
 
@@ -480,8 +499,3 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
   </script>
 </body>
 </html>
-
-
-
-
-
