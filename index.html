@@ -148,6 +148,12 @@
       transform: translateY(-1px);
     }
 
+    /* ✅ Wrapper qui coupe le zoom proprement */
+    .coverWrap{
+      overflow:hidden;
+      background:#0b0b0b;
+    }
+
     /* ✅ Taille "normale" (ratio) pour tous */
     .coverImg{
       width:100%;
@@ -167,6 +173,8 @@
 
     .meta{
       padding: 10px 12px 12px;
+      position: relative;
+      z-index: 2; /* ✅ titre toujours visible */
     }
     .meta h3{
       margin:0;
@@ -370,7 +378,9 @@
 
             <a class="projCard" href="politiques-economiques-face-a-l-inflation.pdf" target="_blank" rel="noreferrer">
               <div class="frame">
-                <img class="coverImg" src="politiques-economiques-inflation-cover.png" alt="politiques economiques face a l'inflation">
+                <div class="coverWrap">
+                  <img class="coverImg" src="politiques-economiques-inflation-cover.png" alt="politiques economiques face a l'inflation">
+                </div>
                 <div class="meta">
                   <h3>politiques economiques face a l'inflation</h3>
                 </div>
@@ -379,7 +389,9 @@
 
             <a class="projCard" href="relations-franco-chinoises.pdf" target="_blank" rel="noreferrer">
               <div class="frame">
-                <img class="coverImg" src="relations-franco-chinoises-cover.png" alt="Relations franco-chinoises">
+                <div class="coverWrap">
+                  <img class="coverImg" src="relations-franco-chinoises-cover.png" alt="Relations franco-chinoises">
+                </div>
                 <div class="meta">
                   <h3>Relations franco-chinoises</h3>
                 </div>
@@ -393,7 +405,9 @@
 
             <a class="projCard" href="jo-paris-2024.pdf" target="_blank" rel="noreferrer">
               <div class="frame">
-                <img class="coverImg" src="jo-paris-2024-cover.png" alt="JO Paris 2024">
+                <div class="coverWrap">
+                  <img class="coverImg" src="jo-paris-2024-cover.png" alt="JO Paris 2024">
+                </div>
                 <div class="meta">
                   <h3>JO Paris 2024</h3>
                 </div>
@@ -402,7 +416,9 @@
 
             <a class="projCard" href="Guerre du Liban.pdf" target="_blank" rel="noreferrer">
               <div class="frame">
-                <img class="coverImg coverImg--liban" src="guerre-du-liban-cover.png" alt="Guerre du Liban">
+                <div class="coverWrap">
+                  <img class="coverImg coverImg--liban" src="guerre-du-liban-cover.png" alt="Guerre du Liban">
+                </div>
                 <div class="meta">
                   <h3>Guerre du Liban</h3>
                 </div>
@@ -497,3 +513,5 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
   </script>
 </body>
 </html>
+
+
