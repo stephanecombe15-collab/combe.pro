@@ -134,17 +134,6 @@
       margin-top: 6px;
     }
 
-    /* NOUVEAU : 1 carte centrée en dessous (PC), normale sur mobile */
-    .projBottomGrid--full{
-      grid-column: 1 / -1;
-      display:flex;
-      justify-content:center;
-      margin-top: 6px;
-    }
-    .projBottomGrid--full .projCard{
-      width: min(360px, 100%);
-    }
-
     .projCard{
       display:block;
       text-decoration:none;
@@ -365,14 +354,6 @@
       .projGrid{ grid-template-columns: 1fr; gap: 16px; }
       .projBottomGrid{ grid-template-columns: 1fr; gap: 16px; }
 
-      /* NOUVEAU : la carte centrée devient normale en colonne sur mobile */
-      .projBottomGrid--full{
-        display:block;
-      }
-      .projBottomGrid--full .projCard{
-        width: 100%;
-      }
-
       .aboutText{ font-size: 0.9rem; }
       .panelCard{ max-height: 74svh; }
     }
@@ -454,20 +435,6 @@
               </div>
             </a>
 
-          </div>
-
-          <!-- NOUVEAU : projet centré en dessous sur PC -->
-          <div class="projBottomGrid--full">
-            <a class="projCard" href="preview-creation-consultations.html" target="_blank" rel="noreferrer">
-              <div class="frame">
-                <div class="coverWrap">
-                  <img class="coverImg" src="creation-consultations-cover.png" alt="Création de consultations médicales et paramédicales en ligne">
-                </div>
-                <div class="meta">
-                  <h3>Création de consultations médicales et paramédicales en ligne</h3>
-                </div>
-              </div>
-            </a>
           </div>
 
         </div>
@@ -569,15 +536,3 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
