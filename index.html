@@ -164,17 +164,17 @@
       background:#0b0b0b;
     }
 
-    /* ✅ Zoom uniquement pour "Guerre du Liban" (moins de blanc) */
+    /* ✅ Zoom local pour réduire le blanc du Liban (sans toucher aux autres) */
     .coverImg--liban{
-      transform: scale(1.18);
+      transform: scale(1.35);
       transform-origin: center;
-      object-position: center 62%;
+      object-position: center 60%;
     }
 
     .meta{
       padding: 10px 12px 12px;
       position: relative;
-      z-index: 2; /* ✅ titre toujours visible */
+      z-index: 2;
     }
     .meta h3{
       margin:0;
@@ -373,7 +373,7 @@
         <div class="projectsInner">
           <h2 class="sectionTitle">Mes Projets</h2>
 
-          <!-- Haut : ordre demandé (Inflation en 1, Relations en 2) -->
+          <!-- Haut -->
           <div class="projGrid">
 
             <a class="projCard" href="politiques-economiques-face-a-l-inflation.pdf" target="_blank" rel="noreferrer">
@@ -400,7 +400,7 @@
 
           </div>
 
-          <!-- Bas : JO + Liban côte à côte sur PC, empilés sur mobile -->
+          <!-- Bas : JO + Liban -->
           <div class="projBottomGrid">
 
             <a class="projCard" href="jo-paris-2024.pdf" target="_blank" rel="noreferrer">
@@ -417,11 +417,7 @@
             <a class="projCard" href="Guerre du Liban.pdf" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
-                  <<img class="coverImg"
-     src="guerre-du-liban-cover-zoom.png"
-     alt="Guerre du Liban"
-     onerror="this.onerror=null; this.src='guerre-du-liban-cover.png';">
-
+                  <img class="coverImg coverImg--liban" src="guerre-du-liban-cover.png" alt="Guerre du Liban">
                 </div>
                 <div class="meta">
                   <h3>Guerre du Liban</h3>
@@ -517,6 +513,8 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
   </script>
 </body>
 </html>
+
+
 
 
 
