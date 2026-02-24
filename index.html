@@ -134,6 +134,17 @@
       margin-top: 6px;
     }
 
+    /* NOUVEAU : 1 carte centrée en dessous (PC), normale sur mobile */
+    .projCenterRow{
+      display:flex;
+      justify-content:center;
+      margin-top: 14px;
+    }
+    .projCenterRow .projCard{
+      width: calc(50% - 7px); /* proche des cartes en grille */
+      max-width: 420px;
+    }
+
     .projCard{
       display:block;
       text-decoration:none;
@@ -190,6 +201,12 @@
       color: rgba(255,255,255,.92);
       text-transform: uppercase;
       user-select:none;
+    }
+
+    /* NOUVEAU : titre long un peu plus petit */
+    .meta h3.long{
+      font-size: 0.82rem;
+      line-height: 1.2;
     }
 
     /* ===== ACTIONS ===== */
@@ -354,6 +371,12 @@
       .projGrid{ grid-template-columns: 1fr; gap: 16px; }
       .projBottomGrid{ grid-template-columns: 1fr; gap: 16px; }
 
+      /* NOUVEAU : la carte centrée devient normale en colonne sur mobile */
+      .projCenterRow .projCard{
+        width: 100%;
+        max-width: none;
+      }
+
       .aboutText{ font-size: 0.9rem; }
       .panelCard{ max-height: 74svh; }
     }
@@ -435,6 +458,20 @@
               </div>
             </a>
 
+          </div>
+
+          <!-- NOUVEAU : projet centré en dessous sur PC -->
+          <div class="projCenterRow">
+            <a class="projCard" href="preview-ecole-republique.html" target="_blank" rel="noreferrer">
+              <div class="frame">
+                <div class="coverWrap">
+                  <img class="coverImg" src="ecole-republique-cover.png" alt="L’égalité des chances au sein de l’école de la République">
+                </div>
+                <div class="meta">
+                  <h3 class="long">L’égalité des chances au sein de l’école de la République</h3>
+                </div>
+              </div>
+            </a>
           </div>
 
         </div>
