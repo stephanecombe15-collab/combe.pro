@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kevin Combe</title>
 
-  <!-- Favicon (si présent dans le repo) -->
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico">
 
   <style>
@@ -119,15 +119,7 @@
     }
 
     /* Grille 2 colonnes */
-    .projGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 6px;
-    }
-
-    /* Bas : 2 cartes côte à côte sur PC */
-    .projBottomGrid{
+    .projGrid, .projBottomGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
@@ -170,7 +162,6 @@
       pointer-events:none;
     }
 
-    /* Zoom local pour le Liban */
     .coverImg--liban{
       transform: scale(1.35);
       transform-origin: center;
@@ -252,7 +243,6 @@
     .item:hover .label{ color: #fff; }
     .item:hover{ opacity:.86; transform: translateY(-1px); transition:.15s ease; }
 
-    /* Drapeau */
     .flag{
       display:inline-flex;
       align-items:center;
@@ -347,7 +337,6 @@
       font-size: 0.95rem;
     }
 
-    /* ===== MOBILE ===== */
     @media (max-width: 520px){
       .photoWrap{ min-height: 420px; }
       .signature{ max-width: 82%; }
@@ -355,8 +344,7 @@
       .iconsCol{ align-items:center; }
       .item{ justify-content:center; width:auto; }
 
-      .projGrid{ grid-template-columns: 1fr; gap: 16px; }
-      .projBottomGrid{ grid-template-columns: 1fr; gap: 16px; }
+      .projGrid, .projBottomGrid{ grid-template-columns: 1fr; gap: 16px; }
 
       .aboutText{ font-size: 0.9rem; }
       .panelCard{ max-height: 74svh; }
@@ -387,9 +375,8 @@
         <div class="projectsInner">
           <h2 class="sectionTitle">Mes Projets</h2>
 
-          <!-- Haut : Inflation + Sénatoriales 2026 -->
+          <!-- Rangée 1 : Inflation + Franco-Chinoises -->
           <div class="projGrid">
-
             <a class="projCard" href="preview-politiques-economiques-face-a-l-inflation.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -401,22 +388,6 @@
               </div>
             </a>
 
-            <a class="projCard" href="preview-senatoriales-2026.html" target="_blank" rel="noreferrer">
-              <div class="frame">
-                <div class="coverWrap">
-                  <img class="coverImg" src="IMG_0420.jpg" alt="Sénatoriales 2026, la montée des extrêmes">
-                </div>
-                <div class="meta">
-                  <h3 class="long">Sénatoriales 2026, la montée des extrêmes</h3>
-                </div>
-              </div>
-            </a>
-
-          </div>
-
-          <!-- Milieu : Franco-Chinoises + JO Paris 2024 -->
-          <div class="projBottomGrid">
-
             <a class="projCard" href="preview-relations-franco-chinoises.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -427,7 +398,10 @@
                 </div>
               </div>
             </a>
+          </div>
 
+          <!-- Rangée 2 : JO Paris 2024 + Guerre du Liban -->
+          <div class="projBottomGrid">
             <a class="projCard" href="preview-jo-paris-2024.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -439,11 +413,6 @@
               </div>
             </a>
 
-          </div>
-
-          <!-- Bas 1 : Liban + École -->
-          <div class="projBottomGrid">
-
             <a class="projCard" href="preview-guerre-du-liban.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -454,7 +423,10 @@
                 </div>
               </div>
             </a>
+          </div>
 
+          <!-- Rangée 3 : École de la République + Salon des Maires -->
+          <div class="projBottomGrid">
             <a class="projCard" href="preview-ecole-republique.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -466,11 +438,6 @@
               </div>
             </a>
 
-          </div>
-
-          <!-- Bas 2 : Salon des Maires -->
-          <div class="projBottomGrid">
-
             <a class="projCard" href="preview-salon-des-maires.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -481,7 +448,20 @@
                 </div>
               </div>
             </a>
+          </div>
 
+          <!-- Rangée 4 (SÉNATORIALES APRÈS SALON DES MAIRES) -->
+          <div class="projBottomGrid">
+            <a class="projCard" href="preview-senatoriales-2026.html" target="_blank" rel="noreferrer">
+              <div class="frame">
+                <div class="coverWrap">
+                  <img class="coverImg" src="IMG_0420.jpg" alt="Sénatoriales 2026">
+                </div>
+                <div class="meta">
+                  <h3 class="long">Sénatoriales 2026, la montée des extrêmes</h3>
+                </div>
+              </div>
+            </a>
           </div>
 
         </div>
@@ -493,7 +473,6 @@
 
       <section class="actions" aria-label="Actions">
         <div class="actionsInner">
-
           <div class="iconsCol">
             <button class="item" id="btnAbout" type="button" aria-controls="panelAbout" aria-expanded="false" title="À propos de moi">
               <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -515,7 +494,6 @@
           <div class="flag" title="France" aria-label="France">
             <span class="fr" aria-hidden="true"><span></span><span></span><span></span></span>
           </div>
-
         </div>
       </section>
 
@@ -545,9 +523,7 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
   </aside>
 
   <script>
-    /* ===== DISSUASION SUR TOUT LE SITE ===== */
     document.addEventListener("contextmenu", (e) => e.preventDefault());
-
     document.addEventListener("keydown", (e) => {
       const key = e.key.toLowerCase();
       const isMac = navigator.platform.toUpperCase().includes("MAC");
@@ -555,7 +531,6 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
       if (mod && (key === "s" || key === "p")) e.preventDefault();
     });
 
-    /* ===== MODALE "À PROPOS" ===== */
     const backdrop = document.getElementById("backdrop");
     const btnAbout = document.getElementById("btnAbout");
     const panelAbout = document.getElementById("panelAbout");
