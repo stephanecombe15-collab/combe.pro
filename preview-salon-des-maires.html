@@ -1,259 +1,96 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Le Salon des Maires 2026 — Kevin Combe</title>
-  <link rel="icon" href="favicon.ico">
-  <style>
-    :root{
-      --bg:#070707;
-      --max: 760px;
-      --r:16px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background: var(--bg);
-      font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-      color: #111111;
-      line-height: 1.7;
-    }
-    .wrap{
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      padding: 18px 14px 50px;
-    }
-    .container{ width:min(var(--max), 100%); }
 
-    /* Barre supérieure harmonisée avec les autres pages */
-    .top{
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(7,7,7,.90);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      padding: 12px 16px;
-      margin-bottom: 24px;
-      border-radius: 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .top-title{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-weight:800;
-      letter-spacing:.5px;
-      text-transform: uppercase;
-      font-size: clamp(12px, 2vw, 14px);
-      color: #fff;
-    }
-    .back{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-      color:#fff;
-      text-decoration:none;
-      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
-      font-size: .85rem;
-      transition:.15s ease;
-      white-space:nowrap;
-    }
-    .back:hover{ background: rgba(255,255,255,.16); transform: translateY(-1px); }
-    .icon{ width:16px; height:16px; display:block; }
+<p>Dans ce sens, les collectivités territoriales ont vu depuis 2023 un besoin de financement se présenter. Causé par une marge d’autofinancement affaiblie, les collectivités paieraient presque leur assiduité. En effet, comme l’indique le rapport de la Cour des Comptes de l’année 2025, les dépenses d’investissement des collectivités en 2018 et 2024 ont augmenté de près de 21 milliards d’euros, cycle électoral, besoins d’investissements liés à la transition écologique, implication des régions dans l’exploitation des transports, et témoignent de la charge que les collectivités doivent supporter.</p>
 
-    /* Image de couverture */
-    .hero-frame{
-      position: relative;
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,.2);
-      background: #000;
-      overflow: hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.55);
-      margin-bottom: 24px;
-    }
-    .hero-frame img{
-      width: 100%;
-      height: auto;
-      display: block;
-      user-select: none;
-      -webkit-user-drag: none;
-      pointer-events: none;
-    }
+<p>Il est bon de rappeler que la Dotation globale de fonctionnement, DGF, reste la première ressource financière des collectivités, et s’élève à près de 27 Mds d’euros, restant en volume stable sur deux ans, après trois années de hausse. Cependant, elle a été gelée par la Loi de Finances 2026, privant les collectivités de sa première marge de manœuvre.</p>
 
-    /* Page type document papier blanc */
-    .docPage{
-      position: relative;
-      background: #fdfdfd;
-      border-radius: var(--r);
-      padding: 44px 40px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.6);
-      border: 1px solid #e0e0e0;
-      overflow: hidden;
-    }
+<p>Dans cet esprit, le Ministre du Logement, Vincent JEANBRUN, déclarait ce samedi 19 septembre vouloir geler à son tour les Aides Personnalisées au Logement pour le compte du PLF 2026.</p>
 
-    /* Filigrane léger */
-    .wm{
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27380%27%20height%3D%27220%27%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20text%7Bfont-family%3A%20Georgia%2C%20serif%3B%20font-size%3A16px%3B%20fill%3Argba%280%2C0%2C0%2C0.05%29%3B%7D%0A%20%20%3C/style%3E%0A%20%20%3Ctext%20x%3D%270%27%20y%3D%27110%27%20transform%3D%27rotate%28-20%200%20110%29%27%3EKevin%20Combe%20%E2%80%94%20combe.pro%3C/text%3E%0A%3C/svg%3E");
-      background-repeat: repeat;
-      pointer-events: none;
-    }
+<p>Le risque est multiple.</p>
 
-    .docContent{
-      position: relative;
-      z-index: 1;
-    }
+<p>La fragilisation de la capacité d’emprunt des communes, qui se portent garantes auprès des bailleurs sociaux dans le cadre de la construction de logements. Toute baisse ou gel des APL imposée aux bailleurs fragiliserait ce mécanisme et enjoindrait les communes à payer au lieu et place d’un bailleur en défaut.</p>
 
-    .docHeader{
-      text-align: center;
-      margin-bottom: 32px;
-      padding-bottom: 18px;
-      border-bottom: 2px solid #222;
-    }
-    .docHeader h1{
-      margin: 0 0 8px 0;
-      font-size: clamp(20px, 3.5vw, 26px);
-      font-weight: 700;
-      color: #111;
-      line-height: 1.3;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-    }
-    .docHeader .sub{
-      font-style: italic;
-      color: #555;
-      font-size: 0.98rem;
-    }
+<p>Le pouvoir d’achat des foyers les plus modestes étant touché par le non-alignement des APL sur l’inflation, les services sociaux tels que les Centres Communaux d’Action Sociale, CCAS, interviendraient pour apporter une aide financière d’urgence aux foyers les plus touchés.</p>
 
-    .chapeau{
-      background: #f2f2f2;
-      border-left: 4px solid #333;
-      padding: 16px 20px;
-      margin-bottom: 28px;
-      font-size: 1rem;
-      color: #222;
-    }
+<p>Et pourtant, l’endettement des collectivités, ou encours global de la dette des administrations publiques locales, APUL, représente à peine 10 % du PIB national, soit 250 milliards d’euros.</p>
 
-    p{
-      margin: 0 0 18px 0;
-      font-size: 1.02rem;
-      color: #1a1a1a;
-      text-align: justify;
-      text-indent: 20px;
-    }
+<p>Pour ne rien arranger, cette tension fiscale s’accentue d’autant plus que la contrainte d’équilibre pèse sur le vote du budget des collectivités. Autrement dit, il est demandé de voter un budget à l’équilibre réel, contrairement à l’État.</p>
 
-    h2{
-      font-size: 1.2rem;
-      margin: 32px 0 14px 0;
-      color: #111;
-      font-weight: bold;
-    }
+<p>Ainsi, ces contraintes budgétaires constituent une véritable épée de Damoclès pour les collectivités qui finalement voient leur vitalité économique prendre un coup de froid. De la suppression de la taxe d’habitation à l’effort national demandé sans contrepartie apportée, les élus locaux sont forcés d’effectuer de véritables gymnastiques pour trouver la bonne formule et maintenir la confiance en leurs administrés.</p>
 
-    ul{
-      margin: 0 0 18px 24px;
-      padding: 0;
-    }
-    li{
-      margin-bottom: 8px;
-      color: #1a1a1a;
-      font-size: 1rem;
-    }
+<p>Le Salon constitue donc un lieu de recherche de solutions.</p>
 
-    footer{
-      text-align: center;
-      color: rgba(255,255,255,.6);
-      font-family: ui-sans-serif, system-ui, sans-serif;
-      font-size: .8rem;
-      margin-top: 30px;
-    }
+<p>L’audace locale ne consiste plus seulement à lancer de nouveaux projets. Elle consiste désormais à faire des choix : investir malgré la contrainte budgétaire, intégrer de nouveaux outils technologiques, adapter les équipements aux transformations climatiques et répondre à des attentes citoyennes en évolution.</p>
 
-    @media (max-width: 520px){
-      .wrap{ padding: 10px 8px 30px; }
-      .docPage{ padding: 24px 18px; }
-      p{ text-align: left; text-indent: 0; font-size: 0.95rem; }
-      .chapeau{ padding: 12px 14px; font-size: 0.94rem; }
-    }
+<h2>2. L’IA : de l’expérimentation à la transformation de l’action publique</h2>
 
-    @media print{ html, body{ display:none!important; } }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <div class="container">
-      
-      <!-- Top Bar avec le bouton retour harmonisé -->
-      <div class="top">
-        <h1 class="top-title">Le Salon des Maires 2026</h1>
-        <a class="back" href="index.html" title="Retour">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Retour
-        </a>
-      </div>
+<p>Si les contraintes budgétaires existent, elles ne peuvent déroger à la dure loi de l’évolution de la société.</p>
 
-      <!-- 1. Couverture PNG -->
-      <div class="hero-frame">
-        <div class="wm" aria-hidden="true"></div>
-        <img src="salon-des-maires-cover.png" alt="Le Salon des Maires et des Collectivités Locales">
-      </div>
+<p>En ce sens, penser l’avenir des collectivités doit nous forcer à revoir également son approche et ses outils de travail. L’intelligence artificielle constitue là une arme, mais aussi une menace dont il faut se prémunir, et donc appréhender de la meilleure des manières.</p>
 
-      <!-- 2. Document papier blanc -->
-      <div class="docPage">
-        <div class="wm" aria-hidden="true"></div>
+<p>La Banque des Territoires le dit, près de 75 à 90 %, selon le type de collectivités, adoptent ce nouvel outil de travail ou de collaboration, 89 % rien que pour les communes, quand 45 % des collectivités utilisent l’IA pour l’administration et la gestion interne, rédaction de notes, synthèses, relecture de documents d’urbanisme. Et pourtant, ce nouveau levier de transformation doit être abordé avec parcimonie pour ne pas mettre en danger le RGPD, voire le cadre légal en vigueur dans les collectivités, notamment en matière d’utilisation, d’exploitation et de stockage des données.</p>
 
-        <div class="docContent">
-          <div class="docHeader">
-            <h1>Le Salon des Maires et des Collectivités Locales — Novembre 2026</h1>
-            <div class="sub">« L’audace est locale : les grands défis du nouveau mandat au cœur du Salon des Maires »</div>
-          </div>
+<p>Car oui, l’IA au service des collectivités, mais à quel prix et sur quelle base ? Attention, l’œil et la décision, l’analyse et le jugement humain ne doivent pas se substituer à la présence de cet outil. L’IA générative constitue en ce sens, pour les missions susmentionnées, un défi énorme à ne pas négliger tant le travail de relecture, de prise ou rédaction de notes peut s’avérer crucial dans l’aide à la prise de décision.</p>
 
-          <div class="chapeau">
-            Le 24 novembre prochain s’ouvre, au Parc des expositions de la Porte de Versailles, la 32e édition du Salon des Maires et des Collectivités Locales, organisée conjointement avec le Congrès des Maires de l’AMF. Rendez-vous incontournable des acteurs locaux, ce salon rassemblera cette année plus de 65 000 décideurs publics, 1 300 exposants et 400 conférences, autour de l’ensemble des enjeux qui structurent l’action des territoires : aménagement, sécurité, logement, environnement, mobilités, santé, culture, enfance et famille.
-          </div>
+<p>Preuve en est, les outils permettant de générer du texte, type chatbots ou agents conversationnels, ou de faire des retranscriptions, sont sujets à des « hallucinations », c’est-à-dire que le modèle va produire des informations fausses ou inexistantes, comme le rappelle Intercommunalités de France, et peuvent donc constituer un danger à terme pour l’élu, l’agent ou le collaborateur.</p>
 
-          <p>L’édition 2026 s’inscrit dans un contexte politique particulier : à quelques mois de la présidentielle d’avril 2027, et après les municipales de mars 2026 qui ont rebattu les cartes dans de nombreuses collectivités, les équipes élues doivent réorganiser leurs équipes et redéfinir leurs feuilles de route, entre exigences citoyennes et ambitions territoriales. Les six prochaines années se décident dans les prochains mois, elles ne se reportent pas.</p>
+<p>En somme, le règlement européen sur l’intelligence artificielle précité prévoit de nouvelles obligations spécifiques en matière de qualité des données et des modèles, d’anticipation des risques, de robustesse, d’exactitude et de documentation pour les systèmes d’IA à hauts risques.</p>
 
-          <p>Face à ces transformations, les collectivités sont confrontées à de nombreux défis, dont certains seront au cœur des échanges du prochain Salon des Maires et des Collectivités Locales. Sans prétendre à l’exhaustivité, cet article revient sur quelques-uns des enjeux majeurs auxquels les élus locaux devront répondre au cours de ce nouveau mandat : la contrainte budgétaire, la transformation numérique et l’essor de l’intelligence artificielle, l’adaptation des territoires aux défis sociaux, ainsi que la dimension internationale de l’action locale, à travers la coopération décentralisée.</p>
+<p>Finalement, quels leviers ? Primo, se doter d’une IA souveraine, sur laquelle il existe un moyen de contrôle de la donnée. C’est faire participer au renforcement de la souveraineté numérique française et européenne, mais également renvoyer un sentiment de sécurité à ses concitoyens.</p>
 
-          <h2>1. Une fiscalité contraignante</h2>
+<p>En effet, le Règlement Général sur la Protection des Données, RGPD, n’est pas seulement une contrainte, c’est un gage de confiance. En privilégiant une solution souveraine ou européenne, les collectivités s’assurent que le traitement des données des administrés est effectué dans un cadre juridique protecteur.</p>
 
-          <p>Il est de notoriété commune que les collectivités locales font face à de nombreux défis.</p>
+<p>Les modèles souverains permettent un contrôle granulaire : les données sont traitées, anonymisées si nécessaire, et surtout, elles ne quittent jamais le giron européen. Cette conformité est un argument de poids pour les élus qui doivent rendre des comptes sur la gestion éthique et sécurisée de l’information publique.</p>
 
-          <p>Depuis plusieurs années, les collectivités évoluent dans un environnement marqué par l’augmentation de certaines charges, l’incertitude sur leurs recettes et la nécessité de préserver leur capacité d’investissement.</p>
+<p>Des exemples tels que Nantes Métropole, Nevers Agglomération, Rennes Ville et Métropole s’inscrivent dans ces logiques. Une collectivité peut observer avant de généraliser.</p>
 
-          <p>Comment l’expliquer ? Les différentes crises successives connues tant par l’Europe que par la France ont affaibli les collectivités locales dans un principe « d’effort de guerre », pour citer non pas sans ironie le Président de la République, Emmanuel Macron, qui déclarait le 15 janvier 2026 à Istres, la liberté impossible sans la puissance, et la crainte suscitée.</p>
+<p>L’exemple rennais illustre cette idée, avec la publication, en septembre 2025, de l’observatoire sur l’intelligence artificielle générative, IAG. Dans quel but ? Poser un cadre d’usage à l’intelligence artificielle au sein des services et à disposition des agents de la ville, encapaciter les agents, revoir les opportunités et les risques.</p>
 
-          <p>Et pourtant, ne faudrait-il pas que la 7e puissance mondiale que représente la France puisse voir le premier échelon de la responsabilité publique être lui-même conquérant, et donc ambitieux ?</p>
-        </div>
-      </div>
+<p>La ville de Nevers, elle, signe en février 2025 avec le groupe LACROIX un projet d’expérimentation tourné sur l’innovation et l’intelligence artificielle dédiés aux réseaux d’eau. Cet accord, qui s’inscrit dans la stratégie de développement d’un territoire intelligent au service des utilisateurs de Nevers Agglomération, va permettre d’anticiper les incidents du réseau d’eau et ainsi de réduire les pertes d’eau grâce à l’IA.</p>
 
-      <footer>
-        &copy; 2026 Kevin Combe — Tous droits réservés.
-      </footer>
-    </div>
-  </div>
+<p>Le Salon devient alors un lieu permettant aux collectivités de confronter les promesses technologiques aux solutions effectivement disponibles.</p>
 
-  <script>
-    document.addEventListener("contextmenu", (e) => e.preventDefault());
-    document.addEventListener("keydown", (e) => {
-      const key = e.key.toLowerCase();
-      const isMac = navigator.platform.toUpperCase().includes("MAC");
-      const mod = isMac ? e.metaKey : e.ctrlKey;
-      if (mod && (key === "s" || key === "p")) e.preventDefault();
-    });
-  </script>
-</body>
-</html>
+<h2>3. L’adaptation des services publics locaux aux nouveaux besoins des populations</h2>
+
+<p>Les collectivités locales doivent aujourd’hui répondre à des besoins qui évoluent rapidement : vieillissement de la population, augmentation des situations d’isolement, évolution des modes de vie, difficultés d’accès au logement, mobilité, mais aussi attentes croissantes des habitants en matière de proximité et de qualité du service public.</p>
+
+<p>Cette transformation oblige les collectivités à repenser non seulement leurs politiques publiques, mais également leur manière de les concevoir et de les évaluer, comme dit précédemment.</p>
+
+<h2>A. Premier exemple : l’adaptation au vieillissement de la population</h2>
+
+<p>Le vieillissement démographique constitue un enjeu majeur pour les communes et intercommunalités. Il implique de repenser l’accessibilité des équipements publics, l’offre de logement, les mobilités, mais également les dispositifs permettant de lutter contre l’isolement.</p>
+
+<p>Une collectivité peut, par exemple, développer des logements adaptés à proximité des commerces et des services, améliorer l’accessibilité de l’espace public ou encore renforcer les dispositifs de transport et d’accompagnement à domicile.</p>
+
+<p>Globalement, il s’agit d’une préoccupation portée par nombre d’élus locaux. La Ville de Troyes a par exemple développé l’Unité Autonomie de Troyes, un point d’accueil et d’informations mis à disposition des personnes âgées. Le Département de l’Aube, lui, déploie le programme « séniors en bibliothèque » pour permettre à nos seniors de maintenir le lien social, par la lecture, les moments d’échange, sous l’impulsion d’activités variées.</p>
+
+<p>La réponse ne consiste donc pas uniquement à augmenter les dépenses consacrées aux personnes âgées. Elle repose également sur une politique d’anticipation et d’aménagement du territoire, permettant de maintenir l’autonomie des habitants tout en limitant, à terme, le coût de leur prise en charge.</p>
+
+<h2>B. Deuxième exemple : rapprocher le service public des usages réels des habitants</h2>
+
+<p>Les collectivités sont également confrontées à une transformation des attentes des citoyens. Les habitants souhaitent pouvoir effectuer leurs démarches plus facilement, obtenir rapidement une information et être davantage associés aux décisions qui concernent leur quotidien.</p>
+
+<p>La dématérialisation peut répondre à une partie de ces attentes, mais elle ne peut constituer une réponse unique, notamment pour les personnes éloignées du numérique.</p>
+
+<p>Une collectivité peut ainsi développer une logique de service public multicanal, combinant démarches en ligne, accueil physique, accompagnement téléphonique et dispositifs d’aller-vers.</p>
+
+<p>Parallèlement, les démarches de participation citoyenne peuvent permettre d’identifier plus précisément les besoins des habitants et d’adapter les politiques publiques aux réalités du terrain.</p>
+
+<h2>4. Une dimension internationale : la coopération décentralisée à l’épreuve des recompositions du monde</h2>
+
+<p>Le Salon des Maires n’est pas seulement un rendez-vous franco-français. L’événement accueille traditionnellement un espace « Europe et International », où interviennent notamment la Représentation de la Commission européenne en France et différents réseaux de coopération transfrontalière, à destination des élus et agents souhaitant nouer des partenariats européens.</p>
+
+<p>L’organisation s’appuie par ailleurs sur des relais de promotion à l’étranger, notamment en Belgique, en Italie et en Espagne, qui favorisent la venue de délégations et de visiteurs européens sur le salon.</p>
+
+<p>Cette dimension internationale renvoie à un enjeu plus large pour les collectivités : la coopération décentralisée, c’est-à-dire les partenariats noués directement par les communes, départements et régions français avec leurs homologues étrangers, en dehors des canaux diplomatiques classiques.</p>
+
+<p>Dans un contexte de recomposition des équilibres géopolitiques et de remise en question du multilatéralisme, cette « diplomatie des territoires » prend une importance croissante : elle permet aux collectivités de porter des projets de solidarité, d’échange de savoir-faire et de coopération technique, tout en affirmant leur rôle d’acteurs à part entière des relations internationales.</p>
+
+<p>Chaque année, les Rencontres de Cités Unies France, association qui fédère les collectivités engagées dans l’action internationale, constituent le rendez-vous national de référence sur ce sujet, distinct du Salon des Maires mais complémentaire dans son objet.</p>
+
+<p>Si le Salon des Maires 2026 ne devrait pas se substituer à cet espace dédié, il n’en demeure pas moins un lieu où les élus pourront, au détour d’un stand ou d’une conférence, nourrir leurs réflexions sur l’ouverture internationale de leur collectivité, qu’il s’agisse de jumelages, de projets européens ou de partenariats de coopération décentralisée avec des territoires du Sud.</p>
+
+<h2>Conclusion</h2>
+
+<p>Pour les nouveaux exécutifs locaux, l’enjeu des prochaines années ne sera donc pas seulement de définir une feuille de route, mais de disposer des moyens et des outils permettant de la mettre en œuvre.</p>
+
+<p>C’est précisément dans cette articulation entre ambition politique, contrainte budgétaire et solutions opérationnelles, désormais pensée aussi à l’échelle internationale, que le Salon des Maires et des Collectivités Locales prend tout son sens.</p>
