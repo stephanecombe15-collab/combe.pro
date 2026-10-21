@@ -18,7 +18,8 @@
       background: var(--bg);
       font-family: Georgia, Cambria, "Times New Roman", Times, serif;
       color: #111111;
-      line-height: 1.7;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
     }
     .wrap{
       min-height:100vh;
@@ -124,10 +125,10 @@
     }
     .docHeader h1{
       margin: 0 0 8px 0;
-      font-size: clamp(20px, 3.5vw, 26px);
+      font-size: clamp(18px, 3.5vw, 26px);
       font-weight: 700;
       color: #111;
-      line-height: 1.3;
+      line-height: 1.35;
       text-transform: uppercase;
       letter-spacing: .3px;
     }
@@ -139,24 +140,25 @@
 
     /* Encadré introduction / Chapeau */
     .chapeau{
-      background: #f2f2f2;
-      border-left: 4px solid #333;
+      background: #f4f4f4;
+      border-left: 3px solid #333;
       padding: 16px 20px;
       margin-bottom: 28px;
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: #222;
+      line-height: 1.7;
     }
 
     p{
       margin: 0 0 18px 0;
-      font-size: 1.02rem;
+      font-size: 1rem;
       color: #1a1a1a;
       text-align: justify;
       text-indent: 20px;
     }
 
     h2{
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       margin: 32px 0 14px 0;
       color: #111;
       font-weight: bold;
@@ -169,7 +171,7 @@
     li{
       margin-bottom: 8px;
       color: #1a1a1a;
-      font-size: 1rem;
+      font-size: 0.98rem;
     }
 
     footer{
@@ -180,11 +182,23 @@
       margin-top: 30px;
     }
 
+    /* OPTIMISATION PRÉCISE MOBILE (Recul, aération & épuré) */
     @media (max-width: 520px){
-      .wrap{ padding: 10px 8px 30px; }
-      .docPage{ padding: 24px 18px; }
-      p{ text-align: left; text-indent: 0; font-size: 0.95rem; }
-      .chapeau{ padding: 12px 14px; font-size: 0.94rem; }
+      .wrap{ padding: 12px 10px 36px; }
+      .docPage{ padding: 26px 20px; border-radius: 12px; }
+      .docHeader h1{ font-size: 1.15rem; }
+      .docHeader .sub{ font-size: 0.88rem; }
+      .chapeau{ padding: 12px 14px; font-size: 0.88rem; line-height: 1.65; margin-bottom: 22px; }
+      p{ 
+        text-align: left; 
+        text-indent: 0; 
+        font-size: 0.88rem; 
+        line-height: 1.72; 
+        margin-bottom: 16px;
+        color: #222222;
+      }
+      h2{ font-size: 1.02rem; margin: 24px 0 10px 0; }
+      li{ font-size: 0.88rem; }
     }
 
     @media print{ html, body{ display:none!important; } }
@@ -227,7 +241,7 @@
 
           <p>En effet, la propagation de ces mouvements se poursuit, atteignant donc un nouvel espace de gouvernance publique par la Chambre haute hexagonale.</p>
 
-          <p>Le Rassemblement National vient en effet de confirmer sa montée en puissance, et son extension au sein du paysage politique français, et pas n’importe comment. Le groupe politique guidé par Marine Le Pen rentre au Sénat avec onze élus parmi lesquels Edwige Diaz (Présidente du groupe au Sénat ou encore Aymeric Duroux), et possède désormais un groupe parlementaire au sein de la chambre. Il ne s’agit pas là d’un micro-évènement, mais bien de la nécessaire appréciation et du questionnement des raisons qui ont permis cette percée, et des effets qui pourraient en découler.</p>
+          <p>Le Rassemblement National vient en effet de confirmer sa montée en puissance, et son extension au sein du paysage politique français, et pas n’importe comment. Le groupe politique guidé par Marine Le Pen rentre au Sénat avec onze élus parmi lesquels Edwige Diaz (Présidente du groupe au Sénat ou encore Aymeric Duroux), et possède désormais un groupe parlementaire au sein de la chambre. Il ne s’agit pas là d’un micro-évènement, mais bien de la nécessaire appreciation et du questionnement des raisons qui ont permis cette percée, et des effets qui pourraient en découler.</p>
 
           <p>De son côté, La France Insoumise de Jean-Luc Mélenchon voit deux sièges s’offrir à elle, avec les sénateurs que sont Gabriel Amard (Rhône) et Marc Péré (Haute-Garonne).</p>
 
