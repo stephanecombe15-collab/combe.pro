@@ -11,8 +11,8 @@
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.70);
       --line:rgba(255,255,255,.12);
-      --max: 780px;
-      --r:16px;
+      --max: 820px;
+      --r:18px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -21,16 +21,17 @@
       background:var(--bg);
       color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
     }
     .wrap{
       min-height:100vh;
       display:flex;
       justify-content:center;
-      padding: 18px 14px 40px;
+      padding: 18px 14px 50px;
     }
-    .page{ width:min(var(--max), 100%); }
+    .container{ width:min(var(--max), 100%); }
 
-    /* Barre supérieure Sticky */
+    /* Barre supérieure */
     .top{
       position: sticky;
       top: 0;
@@ -40,18 +41,19 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,.10);
       padding: 12px 0;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:12px;
     }
-    .title{
+    .top-title{
       margin:0;
       font-weight:800;
-      letter-spacing:.6px;
+      letter-spacing:.5px;
       text-transform: uppercase;
-      font-size: clamp(13px, 2.2vw, 17px);
+      font-size: clamp(13px, 2vw, 16px);
+      color: #fff;
     }
     .back{
       display:inline-flex;
@@ -63,29 +65,24 @@
       background: rgba(255,255,255,.06);
       color:#fff;
       text-decoration:none;
-      font-size:.88rem;
+      font-size: .85rem;
       transition:.15s ease;
       white-space:nowrap;
     }
     .back:hover{ background: rgba(255,255,255,.12); transform: translateY(-1px); }
     .icon{ width:16px; height:16px; display:block; }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    /* Cadre d'image pour la couverture */
-    .imgFrame{
+    /* Image de couverture */
+    .hero-frame{
       position: relative;
       border-radius: var(--r);
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       overflow:hidden;
       box-shadow: 0 18px 50px rgba(0,0,0,.55);
+      margin-bottom: 24px;
     }
-    .imgFrame img{
+    .hero-frame img{
       width:100%;
       height:auto;
       display:block;
@@ -94,104 +91,91 @@
       pointer-events:none;
     }
 
-    /* Page de document type papier élégant */
-    .docPage{
-      position: relative;
-      background: #fcfcfc;
-      color: #111111;
-      border-radius: var(--r);
-      padding: 42px 36px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.65);
-      border: 1px solid rgba(255,255,255,.2);
-      overflow: hidden;
-      font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-      line-height: 1.65;
-    }
-
-    /* Filigrane en arrière-plan */
-    .wmOverlay{
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27380%27%20height%3D%27220%27%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20text%7Bfont-family%3A%20Georgia%2C%20serif%3B%20font-size%3A16px%3B%20fill%3Argba%280%2C0%2C0%2C0.05%29%3B%7D%0A%20%20%3C/style%3E%0A%20%20%3Ctext%20x%3D%270%27%20y%3D%27110%27%20transform%3D%27rotate%28-20%200%20110%29%27%3EKevin%20Combe%20%E2%80%94%20combe.pro%3C/text%3E%0A%3C/svg%3E");
+    /* Filigrane (protection visuelle) */
+    .wm{
+      position:absolute;
+      inset:0;
+      background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27420%27%20height%3D%27260%27%3E%0A%20%20%3Cstyle%3E%0A%20%20%20%20text%7Bfont-family%3A%20Arial%2C%20sans-serif%3B%20font-size%3A18px%3B%20fill%3Argba%28255%2C255%2C255%2C0.06%29%3B%7D%0A%20%20%3C/style%3E%0A%20%20%3Ctext%20x%3D%270%27%20y%3D%27140%27%20transform%3D%27rotate%28-18%200%20140%29%27%3EKevin%20Combe%20%E2%80%94%20combe.pro%3C/text%3E%0A%3C/svg%3E");
       background-repeat: repeat;
-      pointer-events: none;
-      z-index: 2;
+      pointer-events:none;
     }
 
-    .docContent{
-      position: relative;
-      z-index: 1;
+    /* Corps de l'article */
+    article{
+      background: rgba(255, 255, 255, .02);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 32px 28px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.4);
     }
 
-    .docHeader{
-      text-align: center;
+    /* Chapeau / Définition */
+    .chapeau{
+      background: rgba(229, 9, 20, 0.08);
+      border-left: 4px solid #e50914;
+      padding: 16px 20px;
+      border-radius: 4px 8px 8px 4px;
       margin-bottom: 28px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid #222;
-    }
-    .docHeader h1{
-      margin: 0 0 6px 0;
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: #000;
-      text-transform: uppercase;
-      letter-spacing: .3px;
-    }
-    .docHeader .sub{
-      font-style: italic;
-      color: #444;
-      font-size: 0.98rem;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.95);
     }
 
-    .chapeauBox{
-      background: #f2f2f2;
-      border-left: 3px solid #888;
-      padding: 14px 18px;
-      margin-bottom: 22px;
-      font-size: 0.96rem;
-      color: #222;
+    h1.article-title{
+      font-size: clamp(22px, 4vw, 32px);
+      line-height: 1.25;
+      margin: 0 0 20px 0;
+      color: #fff;
+      font-weight: 800;
     }
 
     p{
-      margin: 0 0 16px 0;
+      margin: 0 0 18px 0;
+      color: rgba(255,255,255,.88);
+      font-size: 1rem;
       text-align: justify;
-      font-size: 1.02rem;
-      color: #1a1a1a;
-      text-indent: 20px;
     }
 
     h2{
-      font-size: 1.15rem;
-      margin: 28px 0 12px 0;
-      color: #000;
-      font-weight: bold;
+      font-size: 1.35rem;
+      color: #fff;
+      margin: 32px 0 14px 0;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line);
     }
 
     ul{
-      margin: 0 0 16px 20px;
+      margin: 0 0 18px 20px;
       padding: 0;
     }
+
     li{
-      margin-bottom: 6px;
-      color: #1a1a1a;
-      font-size: 0.98rem;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,.88);
     }
 
+    footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:.8rem;
+      margin-top: 30px;
+      padding-bottom: 20px;
+    }
+
+    @media print{html,body{display:none!important}}
     @media (max-width: 520px){
-      .wrap{ padding: 12px 10px 30px; }
-      .docPage{ padding: 24px 18px; }
-      .docHeader h1{ font-size: 1.2rem; }
-      p{ text-align: left; font-size: 0.95rem; text-indent: 0; }
+      article{ padding: 18px 16px; }
+      .chapeau{ padding: 14px 16px; font-size: 0.98rem; }
+      p{ text-align: left; }
     }
-
-    @media print{ html, body{ display:none!important; } }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="page">
+    <div class="container">
+      
+      <!-- Barre haute -->
       <div class="top">
-        <h1 class="title">Sénatoriales 2026 : du concept à la réalité</h1>
+        <h1 class="top-title">AxInfos</h1>
         <a class="back" href="index.html" title="Retour">
           <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -200,67 +184,79 @@
         </a>
       </div>
 
-      <div class="grid">
-        <!-- 1. L'image de couverture AxInfos -->
-        <div class="imgFrame">
-          <img src="senatoriales-cover.png" alt="Sénatoriales 2026 — L'Édito Politique">
+      <!-- Image de couverture -->
+      <div class="hero-frame">
+        <div class="wm" aria-hidden="true"></div>
+        <img src="senatoriales-cover.png" alt="Sénatoriales 2026, la montée des extrêmes — Kevin Combe">
+      </div>
+
+      <!-- Article complet -->
+      <article>
+        <h1 class="article-title">Sénatoriales 2026, la montée des extrêmes : du concept à la réalité</h1>
+
+        <div class="chapeau">
+          <strong>Propagation,</strong> l’action par laquelle un phénomène, un organisme, une onde ou une information se diffuse, se transmet ou s’étend à partir d’une source vers de nouveaux espaces ou de nouveaux individus. Cette définition traduit dans les faits l’arrivée du Rassemblement National et de La France Insoumise au Sénat, à l’issue des élections du 27 septembre 2026, renouvelant la moitié des sièges des sénateurs.
         </div>
 
-        <!-- 2. Le document retranscrit façon papier avec filigrane -->
-        <div class="docPage">
-          <div class="wmOverlay" aria-hidden="true"></div>
-          
-          <div class="docContent">
-            <div class="docHeader">
-              <h1>Sénatoriales 2026, la montée des extrêmes : du concept à la réalité</h1>
-              <div class="sub">L'Édito Politique — Par Kevin Combe</div>
-            </div>
+        <p>En effet, la propagation de ces mouvements se poursuit, atteignant donc un nouvel espace de gouvernance publique par la Chambre haute hexagonale.</p>
 
-            <!-- Mise en garde / Chapeau -->
-            <div class="chapeauBox">
-              <strong>Propagation :</strong> l’action par laquelle un phénomène, un organisme, une onde ou une information se diffuse, se transmet ou s’étend à partir d’une source vers de nouveaux espaces ou de nouveaux individus. Cette définition traduit dans les faits l’arrivée du Rassemblement National et de La France Insoumise au Sénat, à l’issue des élections du 27 septembre 2026, renouvelant la moitié des sièges des sénateurs.
-            </div>
+        <p>Le Rassemblement National vient en effet de confirmer sa montée en puissance, et son extension au sein du paysage politique français, et pas n’importe comment. Le groupe politique guidé par Marine Le Pen rentre au Sénat avec onze élus parmi lesquels Edwige Diaz (Présidente du groupe au Sénat ou encore Aymeric Duroux), et possède désormais un groupe parlementaire au sein de la chambre. Il ne s’agit pas là d’un micro-évènement, mais bien de la nécessaire appréciation et du questionnement des raisons qui ont permis cette percée, et des effets qui pourraient en découler.</p>
 
-            <p>En effet, la propagation de ces mouvements se poursuit, atteignant donc un nouvel espace de gouvernance publique par la Chambre haute hexagonale.</p>
+        <p>De son côté, La France Insoumise de Jean-Luc Mélenchon voit deux sièges s’offrir à elle, avec les sénateurs que sont Gabriel Amard (Rhône) et Marc Péré (Haute-Garonne).</p>
 
-            <p>Le Rassemblement National vient en effet de confirmer sa montée en puissance, et son extension au sein du paysage politique français, et pas n’importe comment. Le groupe politique guidé par Marine Le Pen rentre au Sénat avec onze élus parmi lesquels Edwige Diaz (Présidente du groupe au Sénat ou encore Aymeric Duroux), et possède désormais un groupe parlementaire au sein de la chambre. Il ne s’agit pas là d’un micro-évènement, mais bien de la nécessaire appréciation et du questionnement des raisons qui ont permis cette percée, et des effets qui pourraient en découler.</p>
+        <p>Dès lors, les deux formations politiques qui cristallisent les tensions et l’attention au sein de l’espace médiatique et politique actuel, démontrent une chose : il faudra désormais compter sur eux, voire avec eux.</p>
 
-            <p>De son côté, La France Insoumise de Jean-Luc Mélenchon voit deux sièges s’offrir à elle, avec les sénateurs que sont Gabriel Amard (Rhône) et Marc Péré (Haute-Garonne).</p>
+        <p>Dans ce sens, il est utile, primordial et on ne peut plus urgent, de tirer les conclusions de tels résultats, qui sont à plus forte raison, la traduction de l’effritement du paysage politique français, puisque rappelons-le, les sénateurs sont élus par les 162 000 grands électeurs, soit les conseillers municipaux délégués de droit.</p>
 
-            <p>Dès lors, les deux formations politiques qui cristallisent les tensions et l’attention au sein de l’espace médiatique et politique actuel, démontrent une chose : il faudra désormais compter sur eux, voire avec eux.</p>
+        <h2>1. Un fait historique</h2>
 
-            <p>Dans ce sens, il est utile, primordial et on ne peut plus urgent, de tirer les conclusions de tels résultats, qui sont à plus forte raison, la traduction de l’effritement du paysage politique français, puisque rappelons-le, les sénateurs sont élus par les 162 000 grands électeurs, soit les conseillers municipaux délégués de droit.</p>
+        <p>Si les sénateurs ne sont pas les personnalités publiques les plus connues du grand public, ils n’en demeurent pas moins éminemment importants pour la vie politique du pays. En effet, ils détiennent trois pouvoirs principaux, définis par la Constitution :</p>
 
-            <h2>1. Un fait historique</h2>
+        <ul>
+          <li><strong>Le pouvoir législatif</strong> par l’élaboration de la loi</li>
+          <li><strong>Le contrôle de l’action du gouvernement</strong> par les interrogations des ministres et l’évaluation des politiques publiques</li>
+          <li><strong>Le pouvoir constitutionnel</strong> par la révision de la Constitution et bien et en dernier lieu, l’intérim de la Présidence de la République par le Président du Sénat en cas de vacance du pouvoir</li>
+        </ul>
 
-            <p>Si les sénateurs ne sont pas les personnalités publiques les plus connues du grand public, ils n’en demeurent pas moins éminemment importants pour la vie politique du pays. En effet, ils détiennent trois pouvoirs principaux, définis par la Constitution :</p>
+        <p>Ceci étant dit, l’entrée de ces deux formations politiques vient donc alourdir les arguments de ces derniers dans l’exercice du pouvoir. À tort ou à raison, le RN et LFI possèdent une arme supplémentaire dans leur quête de pouvoir élyséen, rendant quasi-indispensable pour « l’arc républicain traditionnel » de s’armer.</p>
 
-            <ul>
-              <li><strong>Le pouvoir législatif</strong> par l’élaboration de la loi</li>
-              <li><strong>Le contrôle de l’action du gouvernement</strong> par les interrogations des ministres et l’évaluation des politiques publiques</li>
-              <li><strong>Le pouvoir constitutionnel</strong> par la révision de la Constitution et bien et en dernier lieu, l’intérim de la Présidence de la République par le Président du Sénat en cas de vacance du pouvoir</li>
-            </ul>
+        <p>Et pour cause, le Rassemblement National emmené par Edwige Diaz (ndlr) s’est associé à l’Union des droites pour la République (UDR) d’Éric Ciotti, afin de constituer ce groupe, qui atteint les 15 sénateurs au total. Mais qu’est-ce que cela signifie dans les faits ? Le parti se voit octroyer de nouveaux droits institutionnels, tels que le droit de tirage, pour obtenir la mise en place d’une commission d’enquête parlementaire ou d’une mission d’information sur la thématique de son choix, sans avoir à passer par un vote en séance, ou bien la fameuse niche parlementaire, c’est-à-dire d’un créneau au sein duquel il peut inscrire une proposition de loi à l’ordre du jour.</p>
 
-            <p>Ceci étant dit, l’entrée de ces deux formations politiques vient donc alourdir les arguments de ces derniers dans l’exercice du pouvoir. À tort ou à raison, le RN et LFI possèdent une arme supplémentaire dans leur quête de pouvoir élyséen, rendant quasi-indispensable pour « l’arc républicain traditionnel » de s’armer.</p>
+        <p>Ainsi, le groupe RN/UDR vient désormais peser sur les débats et compter sur son assise au sein de la chambre (Les Républicains comptant 124 sénateurs et conservent la majorité) pour tenter d’imposer son agenda politique, pour la première fois de l’histoire du parti.</p>
 
-            <p>Et pour cause, le Rassemblement National emmené par Edwige Diaz (ndlr) s’est associé à l’Union des droites pour la République (UDR) d’Éric Ciotti, afin de constituer ce groupe, qui atteint les 15 sénateurs au total. Mais qu’est-ce que cela signifie dans les faits ? Le parti se voit octroyer de nouveaux droits institutionnels, tels que le droit de tirage, pour obtenir la mise en place d’une commission d’enquête parlementaire ou d’une mission d’information sur la thématique de son choix, sans avoir à passer par un vote en séance, ou bien la fameuse niche parlementaire, c’est-à-dire d’un créneau au sein duquel il peut inscrire une proposition de loi à l’ordre du jour.</p>
+        <p>Ce fait est d’autant plus important que l’on sait que le Président de la République, faute d’avoir une majorité à l’Assemblée nationale des suites de la dissolution survenue le 9 juin 2024, a beaucoup compté sur le Sénat et les compromis trouvés avec LR pour faire passer bon nombre de textes bloqués par l’opposition à l’Assemblée. Dans ce registre, 30 à 40% des textes votés depuis la dissolution proviennent de la force du compromis trouvée par le chef de l’État, et des groupes de droite du centre du Sénat, en témoignent le soutien de la chambre sur les votes du budget 2026 (à 187 voix pour et 109 contre) et la loi Asile et Immigration où le gouvernement a dû largement s'aligner sur les exigences de durcissement de la droite sénatoriale (menée par les Républicains) pour garantir l'adoption du texte.</p>
 
-            <p>Ainsi, le groupe RN/UDR vient désormais peser sur les débats et compter sur son assise au sein de la chambre (Les Républicains comptant 124 sénateurs et conservent la majorité) pour tenter d’imposer son agenda politique, pour la première fois de l’histoire du parti.</p>
+        <p>Ainsi, se pose la question de savoir comment le camp présidentiel va-t-il réussir à rameuter des forces qui ne sont plus, à l’heure où les heures d’Emmanuel Macron sont désormais comptées à l’Élysée. Il ne serait pas incorrect de penser que la coalition RN/UDR fera des pieds et des mains pour bloquer les initiatives du camp Macron, le budget de la Sécu 2027 ayant déjà été rejeté - sans surprise - par les 140 députés du Rassemblement National à l’Assemblée nationale.</p>
 
-            <p>Ce fait est d’autant plus important que l’on sait que le Président de la République, faute d’avoir une majorité à l’Assemblée nationale des suites de la dissolution survenue le 9 juin 2024, a beaucoup compté sur le Sénat et les compromis trouvés avec LR pour faire passer bon nombre de textes bloqués par l’opposition à l’Assemblée. Dans ce registre, 30 à 40% des textes votés depuis la dissolution proviennent de la force du compromis trouvée par le chef de l’État, et des groupes de droite du centre du Sénat, en témoignent le soutien de la chambre sur les votes du budget 2026 (à 187 voix pour et 109 contre) et la loi Asile et Immigration où le gouvernement a dû largement s'aligner sur les exigences de durcissement de la droite sénatoriale (menée par les Républicains) pour garantir l'adoption du texte.</p>
+        <p>Du côté de La France Insoumise, une arrivée jugée comme « annonciatrice » nourrit les ambitions du camp mélenchonniste, qui ne seront pas intégrés au groupe écologiste comme le rappelait Yannick Jadot, chef de file EELV. Leur intégration au sein d’un groupe reste donc à définir, pour ceux qui voient l’ancien Ministre de François Mitterrand accéder à la magistrature suprême en mai 2027.</p>
 
-            <p>Ainsi, se pose la question de savoir comment le camp présidentiel va-t-il réussir à rameuter des forces qui ne sont plus, à l’heure où les heures d’Emmanuel Macron sont désormais comptées à l’Élysée. Il ne serait pas incorrect de penser que la coalition RN/UDR fera des pieds et des mains pour bloquer les initiatives du camp Macron, le budget de la Sécu 2027 ayant déjà été rejeté - sans surprise - par les 140 députés du Rassemblement National à l’Assemblée nationale.</p>
+        <h2>II. L’assise recherchée</h2>
 
-            <p>Du côté de La France Insoumise, une arrivée jugée comme « annonciatrice » nourrit les ambitions du camp mélenchonniste, qui ne seront pas intégrés au groupe écologiste comme le rappelait Yannick Jadot, chef de file EELV. Leur intégration au sein d’un groupe reste donc à définir, pour ceux qui voient l’ancien Ministre de François Mitterrand accéder à la magistrature suprême en mai 2027.</p>
+        <p>Si les deux fronts que sont le RN et LFI sont arrivés au Sénat, c’est aussi et surtout la résultante d’un mécanisme politique qui s’oriente de plus en plus vers les extrêmes.</p>
 
-            <h2>II. L’assise recherchée</h2>
+        <p>Preuve en est, les deux forces majeures d’opposition à l’Assemblée nationale sont portées par les groupes susmentionnés et font appel à l’implacable question suivante : la droite conservatrice et le centre réussiront-ils à stopper la vague imposée par LFI et le RN ? Rien n’est moins sûr, l’actualité le prouvant, avec la récupération et le taux d’audience des messages véhiculés tant par Mélenchon et Le Pen, notamment en matière d’inflation, d’immigration, de pouvoir d’achat, pour rejeter la politique macronniste vue comme la grande fautive du déclin de la France. Dans ce sens, les urnes ont fait montre d’un ras-le-bol qui se traduit par des municipales où LFI a exercé une forte pression au premier tour (Toulouse (+27,6 %), Caen (+9,5 points par rapport à 2020), Strasbourg (+9 points), Nancy (+7,8 points) et Paris (+7,1 points pour la liste de Sophia Chikirou). Le tout, pour amener des personnalités telles que Bally Bagayoko à la tête de Saint-Denis, ou encore David Guiraud à Roubaix. Ce ne sont pas des faits isolés, mais bien la constatation que l’éclatement à droite profite à une frange de la gauche qui petit à petit fait son trou, sur fond de discours populistes et de lacunes du camp présidentiel, essoufflé. Pour autant, aucune victoire majoritaire n’est à recenser pour le parti : à Paris, Emmanuel Grégoire (PS) l'a emporté sans faire d'accord avec Sophia Chikirou. À Marseille, Benoît Payan a gagné sans s'allier avec Sébastien Delogu.</p>
 
-            <p>Si les deux fronts que sont le RN et LFI sont arrivés au Sénat, c’est aussi et surtout la résultante d’un mécanisme politique qui s’oriente de plus en plus vers les extrêmes.</p>
+        <p>Le Rassemblement National lui, capitalise sur une légitimation associée à une dédiabolisation du parti - sûrement entachée des révélations de Mediapart à l’encontre de Jordan Bardella - mais qui se revendique encore comme étant le premier parti d’opposition en France. Il faut dire que le Rassemblement national avait des chances d’obtenir de nouveaux sièges au Sénat, au vu de sa progression lors des élections municipales de mars (plus de 70 maires et plus de 3 000 conseillers municipaux ont été élus).</p>
 
-            <p>Preuve en est, les deux forces majeures d’opposition à l’Assemblée nationale sont portées par les groupes susmentionnés et font appel à l’implacable question suivante : la droite conservatrice et le centre réussiront-ils à stopper la vague imposed par LFI et le RN ? Rien n’est moins sûr, l’actualité le prouvant, avec la récupération et le taux d’audience des messages véhiculés tant par Mélenchon et Le Pen, notamment en matière d’inflation, d’immigration, de pouvoir d’achat, pour rejeter la politique macronniste vue comme la grande fautive du déclin de la France. Dans ce sens, les urnes ont fait montre d’un ras-le-bol qui se traduit par des municipales où LFI a exercé une forte pression au premier tour (Toulouse (+27,6 %), Caen (+9,5 points par rapport à 2020), Strasbourg (+9 points), Nancy (+7,8 points) et Paris (+7,1 points pour la liste de Sophia Chikirou). Le tout, pour amener des personnalités telles que Bally Bagayoko à la tête de Saint-Denis, ou encore David Guiraud à Roubaix. Ce ne sont pas des faits isolés, mais bien la constatation que l’éclatement à droite profite à une frange de la gauche qui petit à petit fait son trou, sur fond de discours populistes et de lacunes du camp présidentiel, essoufflé. Pour autant, aucune victoire majoritaire n’est à recenser pour le parti : à Paris, Emmanuel Grégoire (PS) l'a emporté sans faire d'accord avec Sophia Chikirou. À Marseille, Benoît Payan a gagné sans s'allier avec Sébastien Delogu.</p>
+        <p>« Quand on élit un maire, on élit également ensuite un sénateur indirectement », rappelait en novembre 2025 l’eurodéputé RN Julien Sanchez, directeur de campagne pour les élections municipales. De fait, les maires et les délégués des conseils municipaux constituent la majorité du corps électoral pour les sénatoriales.</p>
 
-            <p>Le Rassemblement National lui, capitalise sur une légitimation associée à une dédiabolisation du parti - sûrement entachée des révélations de Mediapart à l’encontre de Jordan Bardella - mais qui se revendique encore comme étant le premier parti d’opposition en France. Il faut dire que le Rassemblement national avait des chances d’obtenir de nouveaux sièges au Sénat, au vu de sa progression lors des élections municipales de mars (plus de 70 maires et plus de 3 000 conseillers municipaux ont été élus).</p>
+        <p>À quelques mois du scrutin présidentiel de 2027, cette double percée sert de tremplin de légitimité pour les deux blocs d'opposition extrêmes. Pour Marine Le Pen et Jordan Bardella, cette performance valide leur stratégie de « normalisation » et « d’adoption » pour la conquête de l'État. Pour LFI, c'est le signal qu'ils peuvent mobiliser au-delà de leurs bases urbaines traditionnelles. Mais attention, face à la reconfiguration de l'hémicycle, les chefs de file des groupes centristes et de droite rappellent le rôle traditionnel du Sénat comme pôle de stabilité institutionnelle et de rempart constitutionnel. En cas de bascule politique majeure à l'Élysée ou à l'Assemblée nationale en 2027, la Haute Assemblée, forte de sa majorité stable, entend affirmer son statut de contre-pouvoir face à l’exécutif, et préserver la tendance historique d’une France qui ne saurait être à la merci des extrêmes, dans une quête de protection de l’arc républicain comme jugé par les partis modérés, qui pour l’heure demeurent impuissants face à la montée des extrêmes, qui n’est donc plus un concept, mais bel et bien une réalité.</p>
+      </article>
 
-            <p>« Quand on élit un maire, on élit également ensuite un sénateur indirectement », rappelait en novembre 2025 l’eurodéputé RN Julien Sanchez, directeur de campagne pour les élections municipales. De fait, les maires et les délégués des conseils municipaux constituent la majorité du corps électoral pour les sénatoriales.</p>
+      <footer>
+        &copy; 2026 Kevin Combe — Tous droits réservés.
+      </footer>
+    </div>
+  </div>
 
-            <p>À quelques mois du scrutin présidentiel de 2027, cette double percée sert de tremplin de
+  <script>
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+    document.addEventListener("keydown", (e) => {
+      const key = e.key.toLowerCase();
+      const isMac = navigator.platform.toUpperCase().includes("MAC");
+      const mod = isMac ? e.metaKey : e.ctrlKey;
+      if (mod && (key === "s" || key === "p")) e.preventDefault();
+    });
+  </script>
+</body>
+</html>
