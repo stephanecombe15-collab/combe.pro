@@ -118,7 +118,7 @@
       align-items:stretch;
     }
 
-    /* Haut : 2 colonnes sur PC */
+    /* Grille 2 colonnes */
     .projGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -132,17 +132,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 14px;
       margin-top: 6px;
-    }
-
-    /* NOUVEAU : 1 carte centrée en dessous (PC), normale sur mobile */
-    .projCenterRow{
-      display:flex;
-      justify-content:center;
-      margin-top: 14px;
-    }
-    .projCenterRow .projCard{
-      width: calc(50% - 7px); /* proche des cartes en grille */
-      max-width: 420px;
     }
 
     .projCard{
@@ -178,10 +167,10 @@
       background:#0b0b0b;
       user-select:none;
       -webkit-user-drag:none;
-      pointer-events:none; /* évite clic direct sur l'image */
+      pointer-events:none;
     }
 
-    /* Zoom local pour réduire le blanc du Liban */
+    /* Zoom local pour le Liban */
     .coverImg--liban{
       transform: scale(1.35);
       transform-origin: center;
@@ -203,7 +192,6 @@
       user-select:none;
     }
 
-    /* NOUVEAU : titre long un peu plus petit */
     .meta h3.long{
       font-size: 0.82rem;
       line-height: 1.2;
@@ -357,7 +345,6 @@
       line-height:1.6;
       white-space:pre-line;
       font-size: 0.95rem;
-      /* tu peux laisser la sélection ici si tu veux */
     }
 
     /* ===== MOBILE ===== */
@@ -370,12 +357,6 @@
 
       .projGrid{ grid-template-columns: 1fr; gap: 16px; }
       .projBottomGrid{ grid-template-columns: 1fr; gap: 16px; }
-
-      /* NOUVEAU : la carte centrée devient normale en colonne sur mobile */
-      .projCenterRow .projCard{
-        width: 100%;
-        max-width: none;
-      }
 
       .aboutText{ font-size: 0.9rem; }
       .panelCard{ max-height: 74svh; }
@@ -406,19 +387,35 @@
         <div class="projectsInner">
           <h2 class="sectionTitle">Mes Projets</h2>
 
-          <!-- Haut -->
+          <!-- Haut : Inflation + Sénatoriales 2026 -->
           <div class="projGrid">
 
             <a class="projCard" href="preview-politiques-economiques-face-a-l-inflation.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
-                  <img class="coverImg" src="politiques-economiques-inflation-cover.png" alt="politiques economiques face a l'inflation">
+                  <img class="coverImg" src="politiques-economiques-inflation-cover.png" alt="Politiques économiques face à l'inflation">
                 </div>
                 <div class="meta">
-                  <h3>politiques economiques face a l'inflation</h3>
+                  <h3>Politiques économiques face à l'inflation</h3>
                 </div>
               </div>
             </a>
+
+            <a class="projCard" href="preview-senatoriales-2026.html" target="_blank" rel="noreferrer">
+              <div class="frame">
+                <div class="coverWrap">
+                  <img class="coverImg" src="IMG_0420.jpg" alt="Sénatoriales 2026, la montée des extrêmes">
+                </div>
+                <div class="meta">
+                  <h3 class="long">Sénatoriales 2026, la montée des extrêmes</h3>
+                </div>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- Milieu : Franco-Chinoises + JO Paris 2024 -->
+          <div class="projBottomGrid">
 
             <a class="projCard" href="preview-relations-franco-chinoises.html" target="_blank" rel="noreferrer">
               <div class="frame">
@@ -431,11 +428,6 @@
               </div>
             </a>
 
-          </div>
-
-          <!-- Bas : JO + Liban -->
-          <div class="projBottomGrid">
-
             <a class="projCard" href="preview-jo-paris-2024.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -446,6 +438,11 @@
                 </div>
               </div>
             </a>
+
+          </div>
+
+          <!-- Bas 1 : Liban + École -->
+          <div class="projBottomGrid">
 
             <a class="projCard" href="preview-guerre-du-liban.html" target="_blank" rel="noreferrer">
               <div class="frame">
@@ -458,11 +455,6 @@
               </div>
             </a>
 
-          </div>
-
-          <!-- Bas 2 : École + Salon des Maires -->
-          <div class="projBottomGrid">
-
             <a class="projCard" href="preview-ecole-republique.html" target="_blank" rel="noreferrer">
               <div class="frame">
                 <div class="coverWrap">
@@ -473,6 +465,11 @@
                 </div>
               </div>
             </a>
+
+          </div>
+
+          <!-- Bas 2 : Salon des Maires -->
+          <div class="projBottomGrid">
 
             <a class="projCard" href="preview-salon-des-maires.html" target="_blank" rel="noreferrer">
               <div class="frame">
@@ -549,10 +546,8 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
 
   <script>
     /* ===== DISSUASION SUR TOUT LE SITE ===== */
-    // clic droit
     document.addEventListener("contextmenu", (e) => e.preventDefault());
 
-    // Ctrl/Cmd+S (save) et Ctrl/Cmd+P (print)
     document.addEventListener("keydown", (e) => {
       const key = e.key.toLowerCase();
       const isMac = navigator.platform.toUpperCase().includes("MAC");
@@ -585,5 +580,4 @@ Mon travail vise à éclairer, structurer et mettre en perspective, sans posture
     window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeAll(); });
   </script>
 </body>
-</html>
 </html>
