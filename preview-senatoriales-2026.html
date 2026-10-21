@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sénatoriales 2026, la montée des extrêmes — AxInfos</title>
+  <title>Sénatoriales 2026, la montée des extrêmes — Kevin Combe</title>
   <link rel="icon" href="favicon.ico">
   <style>
     :root{
@@ -11,7 +11,7 @@
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.70);
       --line:rgba(255,255,255,.12);
-      --max: 820px;
+      --max: 980px;
       --r:18px;
     }
     *{box-sizing:border-box}
@@ -70,7 +70,7 @@
     .grid{
       display:grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 14px;
     }
 
     .imgFrame{
@@ -90,7 +90,6 @@
       pointer-events:none;
     }
 
-    /* Filigrane (dissuasion) */
     .wm{
       position:absolute;
       inset:0;
@@ -123,43 +122,16 @@
       </div>
 
       <div class="grid">
-        <!-- 1. Image de couverture Édito Politique -->
+        <!-- Image de couverture renommée -->
         <div class="imgFrame">
           <div class="wm" aria-hidden="true"></div>
-          <img src="IMG_0420.jpg" alt="AxInfos - L'Édito Politique - Combe Kevin">
-        </div>
-
-        <!-- 2. Pages de lecture (Images PNG) -->
-        <div class="imgFrame">
-          <div class="wm" aria-hidden="true"></div>
-          <img src="previews/senatoriales-2026-p01.png" alt="Sénatoriales 2026 — Page 1">
-        </div>
-        <div class="imgFrame">
-          <div class="wm" aria-hidden="true"></div>
-          <img src="previews/senatoriales-2026-p02.png" alt="Sénatoriales 2026 — Page 2">
-        </div>
-        <div class="imgFrame">
-          <div class="wm" aria-hidden="true"></div>
-          <img src="previews/senatoriales-2026-p03.png" alt="Sénatoriales 2026 — Page 3">
-        </div>
-        <div class="imgFrame">
-          <div class="wm" aria-hidden="true"></div>
-          <img src="previews/senatoriales-2026-p04.png" alt="Sénatoriales 2026 — Page 4">
-        </div>
-        <div class="imgFrame">
-          <div class="wm" aria-hidden="true"></div>
-          <img src="previews/senatoriales-2026-p05.png" alt="Sénatoriales 2026 — Page 5">
-        </div>
-        <div class="imgFrame">
-          <div class="wm" aria-hidden="true"></div>
-          <img src="previews/senatoriales-2026-p06.png" alt="Sénatoriales 2026 — Page 6">
+          <img src="senatoriales-cover.png" alt="Sénatoriales 2026 — L'Édito Politique">
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    /* Protection : Clic droit et raccourcis */
     document.addEventListener("contextmenu", (e) => e.preventDefault());
     document.addEventListener("keydown", (e) => {
       const key = e.key.toLowerCase();
